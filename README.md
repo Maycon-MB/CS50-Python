@@ -1,39 +1,49 @@
-# File Converter
+# Movie Recommendation System
 
-## Description
-This is a Python program that converts files from one format to another. It supports conversion between various file formats such as CSV, JSON, XML, and more. The program provides a simple command-line interface (CLI) for users to specify the input and output file formats and perform the conversion.
+## English
 
-## Descrição
-Este é um programa em Python que converte arquivos de um formato para outro. Ele suporta a conversão entre vários formatos de arquivo, como CSV, JSON, XML e outros. O programa oferece uma interface de linha de comando (CLI) simples para que os usuários possam especificar os formatos de arquivo de entrada e saída e realizar a conversão.
+This project implements a movie recommendation system using content-based filtering. It suggests similar movies based on the characteristics of movies already watched by a user. The system uses TF-IDF (Term Frequency-Inverse Document Frequency) to vectorize the genres of movies and calculates similarity between movies using the cosine of TF-IDF vectors.
 
-## Features
-- Supports conversion between multiple file formats.
-- Simple command-line interface for easy usage.
-- Handles large files efficiently.
-- Provides options for customization and configuration.
+### Files
 
-## Funcionalidades
-- Suporta a conversão entre vários formatos de arquivo.
-- Interface de linha de comando simples para facilitar o uso.
-- Manipula arquivos grandes de forma eficiente.
-- Oferece opções para personalização e configuração.
+- **recommend.py**: Contains the implementation of the recommendation system.
+- **test_recommend.py**: Contains unit tests for the functions in `recommend.py`.
+- **movies.csv**: A CSV file containing movie data, including `movieId`, `title`, and `genres` fields.
+- **requirements.txt**: List of project dependencies.
 
-## Usage
-To use the file converter, follow these steps:
-1. Clone the repository to your local machine.
-2. Install the required dependencies by running `pip install -r requirements.txt`.
-3. Run the program using Python: `python converter.py`.
-4. Follow the instructions provided by the program to specify the input and output file formats and perform the conversion.
+### How to Use
 
-## Uso
-Para usar o conversor de arquivos, siga estes passos:
-1. Clone o repositório para sua máquina local.
-2. Instale as dependências necessárias executando `pip install -r requirements.txt`.
-3. Execute o programa usando Python: `python conversor.py`.
-4. Siga as instruções fornecidas pelo programa para especificar os formatos de arquivo de entrada e saída e realizar a conversão.
+1. **Install Dependencies**:
+   - Make sure you have Python 3.x installed on your system.
+   - Install dependencies by running the following command in the terminal:
+     ```
+     pip install -r requirements.txt
+     ```
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+2. **Run the Recommendation System**:
+   - Execute the `recommend.py` file to see recommendations for a specific movie.
+     ```
+     python recommend.py
+     ```
 
-## Licença
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.
+3. **Run Unit Tests**:
+   - Execute the following command to run unit tests:
+     ```
+     pytest test_recommend.py
+     ```
+
+### Example Usage
+
+```python
+# Example usage of the recommendation system
+if __name__ == "__main__":
+    recommender = MovieRecommender()
+    recommender.preprocess_data()
+
+    movie_title = "GoldenEye (1995)"
+    recommendations = recommender.get_recommendations(movie_title)
+    print(f"Recommendations for '{movie_title}':")
+    for movie in recommendations:
+        print(movie)
+
+
